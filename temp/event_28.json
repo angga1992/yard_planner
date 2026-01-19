@@ -1,0 +1,16 @@
+{
+  "truck_id": "TRUCK-IMP-682",
+  "container_id": "CONT-2066",
+  "is_import": 1,
+  "is_export": 0,
+  "is_inter_transhipment": 0,
+  "is_intra_transhipment": 0,
+  "weight_kg": 20000,
+  "size_ft": 40,
+  "is_reefer": 0,
+  "is_hazard": 0,
+  "is_dry": 1,
+  "is_pick_up": 1,
+  "is_drop_off": 0,
+  "time": "2026-01-18T23:04:33.931Z"
+}

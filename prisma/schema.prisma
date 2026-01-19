@@ -1,0 +1,131 @@
+// ============================================
+// FILE: prisma/schema.prisma
+// ============================================
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model YardSlot {
+  id                    Int      @id @default(autoincrement())
+  yard                  String
+  block                 String
+  bay                   Int
+  row                   Int
+  tier                  Int
+  size_ft               Int
+  container_id          String?
+  is_import             Float
+  is_export             Float
+  is_inter_transhipment Float
+  is_intra_transhipment Float
+  weight_kg             Float
+  is_reefer             Float
+  is_hazard             Float
+  is_dry                Float
+  is_pick_up            Float
+  is_drop_off           Float
+  time                  DateTime
+  created_at            DateTime @default(now())
+  updated_at            DateTime @updatedAt
+
+  @@unique([yard, block, bay, row, tier])
+  @@index([container_id])
+  @@index([yard, block])
+  @@map("yard_slots")
+}
+
+model Event {
+  id                    Int      @id @default(autoincrement())
+  truck_id              String
+  container_id          String
+  is_import             Float
+  is_export             Float
+  is_inter_transhipment Float
+  is_intra_transhipment Float
+  weight_kg             Float
+  size_ft               Int
+  is_reefer             Float
+  is_hazard             Float
+  is_dry                Float
+  is_pick_up            Int
+  is_drop_off           Int
+  time                  DateTime
+  status                String   @default("pending") // pending, processing, completed, failed
+  created_at            DateTime @default(now())
+  updated_at            DateTime @updatedAt
+
+  simulation_results SimulationResult[]
+
+  @@index([truck_id])
+  @@index([container_id])
+  @@index([status])
+  @@map("events")
+}
+
+model Preplanning {
+  id           Int      @id @default(autoincrement())
+  container_id String
+  yard         String
+  block        String
+  bay          Int
+  row          Int
+  tier         Int
+  time         DateTime
+  status       String   @default("active") // active, used, expired
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  @@index([container_id])
+  @@index([yard, block])
+  @@map("preplannings")
+}
+
+model SimulationResult {
+  id                      Int      @id @default(autoincrement())
+  event_id                Int?
+  event_time              DateTime
+  start_time              Float
+  end_time                Float
+  container_id            String
+  move_type               String
+  from_sid                String
+  from_tier               Float
+  to_sid                  String
+  to_tier                 Int
+  distance_crane          Int
+  crane_id                String
+  from_truck_zone_id      String
+  to_truck_zone_id        String
+  truck_id                String
+  distance_internal_truck Float?
+  distance_external_truck Float?
+  created_at              DateTime @default(now())
+
+  event Event? @relation(fields: [event_id], references: [id])
+
+  @@index([container_id])
+  @@index([truck_id])
+  @@index([event_id])
+  @@map("simulation_results")
+}
+
+model AuditLog {
+  id          Int      @id @default(autoincrement())
+  action      String
+  entity_type String
+  entity_id   Int?
+  data        Json?
+  ip_address  String?
+  user_agent  String?
+  created_at  DateTime @default(now())
+
+  @@index([action])
+  @@index([entity_type])
+  @@index([created_at])
+  @@map("audit_logs")
+}

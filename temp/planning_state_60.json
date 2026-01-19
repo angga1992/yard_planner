@@ -1,0 +1,1602 @@
+[
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.232Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.232Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.232Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.232Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP849159",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP195213",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP410699",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP911434",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 1,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP914420",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP745073",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 2,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP552501",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "REF498796",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP657467",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP811901",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "IMP188425",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP448952",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP839156",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 3,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "REF836392",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP549326",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "IMP660596",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "IMP718827",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP907713",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP331473",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP871969",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "EXP195244",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 4,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "IMP655988",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP133814",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP305353",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "IMP317655",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP299459",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP536891",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP210328",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP151894",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "IMP216228",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "IMP737176",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP247577",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "REF710640",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "A",
+    "bay": 5,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "REF221467",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP347332",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "REF882956",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "EXP737207",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP933927",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "REF641384",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 1,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP950138",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP560859",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "IMP699490",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP224103",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP928177",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP156448",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "EXP455933",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP752103",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP559600",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "EXP261449",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 2,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "IMP989498",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "REF868481",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP192870",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "REF570405",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP753713",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "IMP501613",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "EXP521971",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "EXP321944",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP540828",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 3,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP264449",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP300746",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "EXP590712",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "REF160967",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP448490",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP936492",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP837128",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "EXP365215",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "EXP293276",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 4,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 1,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "IMP187660",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 1,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 1,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 1,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 2,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 2,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 2,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 2,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 3,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": "EXP116038",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 3,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": "EXP164422",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 3,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": "EXP986900",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 3,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": "EXP353214",
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 4,
+    "tier": 1,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 4,
+    "tier": 2,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 4,
+    "tier": 3,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  },
+  {
+    "yard": "Y1",
+    "block": "B",
+    "bay": 5,
+    "row": 4,
+    "tier": 4,
+    "size_ft": 40,
+    "container_id": null,
+    "time": "2026-01-19T01:14:36.233Z"
+  }
+]

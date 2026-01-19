@@ -1,0 +1,20 @@
+[
+  {
+    "event_time": "2026-01-19T01:20:23.720Z",
+    "start_time": 0,
+    "end_time": 24.373708885522234,
+    "container_id": "MAEU-EXP-948",
+    "move_type": "drop_off",
+    "from_sid": "GATE_IN",
+    "from_tier": 1,
+    "to_sid": "Y1-A-01-01",
+    "to_tier": 1,
+    "distance_crane": 73,
+    "crane_id": "RTG-AUTO-01",
+    "from_truck_zone_id": "GATE",
+    "to_truck_zone_id": "BLOCK_A",
+    "truck_id": "TRUCK-EXP-139",
+    "distance_internal_truck": 120.5,
+    "distance_external_truck": 50
+  }
+]

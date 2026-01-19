@@ -1,0 +1,16 @@
+{
+  "truck_id": "TRUCK-EXP-508",
+  "container_id": "CONT-EXP-606",
+  "is_import": 0,
+  "is_export": 1,
+  "is_inter_transhipment": 0,
+  "is_intra_transhipment": 0,
+  "weight_kg": 24000,
+  "size_ft": 40,
+  "is_reefer": 0,
+  "is_hazard": 0,
+  "is_dry": 1,
+  "is_pick_up": 0,
+  "is_drop_off": 1,
+  "time": "2026-01-15T09:48:05.642Z"
+}

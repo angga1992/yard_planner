@@ -1,0 +1,331 @@
+// ============================================
+// FILE: app/api/yard/get-action/route.ts
+// ============================================
+import { NextRequest, NextResponse } from 'next/server';
+import { spawn } from 'child_process';
+import { writeFile, readFile, mkdir } from 'fs/promises';
+import path from 'path';
+import prisma from '@/lib/db';
+import { createAuditLog } from '@/lib/audit';
+
+interface EventData {
+  truck_id: string;
+  container_id: string;
+  is_import: number;
+  is_export: number;
+  is_inter_transhipment: number;
+  is_intra_transhipment: number;
+  weight_kg: number;
+  size_ft: number;
+  is_reefer: number;
+  is_hazard: number;
+  is_dry: number;
+  is_pick_up: number;
+  is_drop_off: number;
+  time: string;
+}
+
+interface PreplanningData {
+  container_id: string;
+  yard: string;
+  block: string;
+  bay: number;
+  row: number;
+  tier: number;
+  time: string;
+}
+
+interface RequestBody {
+  event: EventData;
+  preplanning?: PreplanningData;
+}
+
+export async function POST(request: NextRequest) {
+  let eventRecord: { status: string; truck_id: string; container_id: string; is_import: number; is_export: number; is_inter_transhipment: number; is_intra_transhipment: number; weight_kg: number; size_ft: number; is_reefer: number; is_hazard: number; is_dry: number; is_pick_up: number; is_drop_off: number; time: Date; created_at: Date; updated_at: Date; id: number; } | null = null;
+  
+  try {
+    const body: RequestBody = await request.json();
+    const { event, preplanning } = body;
+
+    // Validate event data
+    if (!event || !event.truck_id || !event.container_id) {
+      return NextResponse.json(
+        { error: 'Missing required event fields: truck_id, container_id' },
+        { status: 400 }
+      );
+    }
+
+    // 1. Save event to database
+    eventRecord = await prisma.event.create({
+      data: {
+        truck_id: event.truck_id,
+        container_id: event.container_id,
+        is_import: event.is_import,
+        is_export: event.is_export,
+        is_inter_transhipment: event.is_inter_transhipment,
+        is_intra_transhipment: event.is_intra_transhipment,
+        weight_kg: event.weight_kg,
+        size_ft: event.size_ft,
+        is_reefer: event.is_reefer,
+        is_hazard: event.is_hazard,
+        is_dry: event.is_dry,
+        is_pick_up: event.is_pick_up,
+        is_drop_off: event.is_drop_off,
+        time: new Date(event.time),
+        status: 'processing',
+      },
+    });
+
+    // 2. Save preplanning if provided
+    if (preplanning) {
+      await prisma.preplanning.create({
+        data: {
+          container_id: preplanning.container_id,
+          yard: preplanning.yard,
+          block: preplanning.block,
+          bay: preplanning.bay,
+          row: preplanning.row,
+          tier: preplanning.tier,
+          time: new Date(preplanning.time),
+          status: 'active',
+        },
+      });
+    }
+
+    // 3. Prepare Data for Simulation Script
+    const yardSlots = await prisma.yardSlot.findMany();
+    const yardStateJson = yardSlots.map(slot => ({
+      yard: slot.yard,
+      block: slot.block,
+      bay: slot.bay,
+      row: slot.row,
+      tier: slot.tier,
+      size_ft: slot.size_ft,
+      container_id: slot.container_id,
+      // ... map field lain sesuai kebutuhan script ...
+      time: slot.time.toISOString(),
+    }));
+
+    // 4. Create Temp Files
+    const tempDir = path.join(process.cwd(), 'temp');
+    try { await mkdir(tempDir, { recursive: true }); } catch (e) {}
+
+    const planningStatePath = path.join(tempDir, `planning_state_${eventRecord.id}.json`);
+    const eventPath = path.join(tempDir, `event_${eventRecord.id}.json`);
+    
+    await writeFile(planningStatePath, JSON.stringify(yardStateJson, null, 2));
+    await writeFile(eventPath, JSON.stringify(event, null, 2));
+
+    let preplanningPath;
+    if (preplanning) {
+      preplanningPath = path.join(tempDir, `preplanning_${eventRecord.id}.json`);
+      await writeFile(preplanningPath, JSON.stringify(preplanning, null, 2));
+    }
+
+    // 5. EXECUTE TYPESCRIPT SIMULATION (NO PYTHON)
+    // Kita menggunakan 'tsx' untuk menjalankan script .ts secara langsung
+    const scriptPath = path.join(process.cwd(), 'scripts', 'run_rl_des_inference_single.ts');
+    
+    const args = [
+      'tsx', // Argument pertama untuk npx adalah nama package yang mau dijalankan
+      scriptPath,
+      '--event_json', eventPath,
+      '--planning_state_json', planningStatePath
+    ];
+
+    if (preplanningPath) {
+      args.push('--preplanning_json', preplanningPath);
+    }
+
+    // Deteksi OS untuk command npx yang benar
+    const command = process.platform === 'win32' ? 'npx.cmd' : 'npx';
+
+    console.log(`Executing: ${command} ${args.join(' ')}`); // Debug log
+
+    const executionResult = await executeScript(command, args);
+
+    // 6. Read Results
+    const resultsPath = path.join(
+      process.cwd(), 
+      'ReinforcementLearningStrategyDES_DES_simulated_tasks.json'
+    );
+    
+    let simulationResults;
+    try {
+      const resultsContent = await readFile(resultsPath, 'utf-8');
+      simulationResults = JSON.parse(resultsContent);
+    } catch (error) {
+      console.error('Simulation script failed/no output:', executionResult.stderr);
+      await prisma.event.update({
+        where: { id: eventRecord.id },
+        data: { status: 'failed' },
+      });
+      
+      return NextResponse.json({ 
+        error: 'Simulation failed or produced no output',
+        script_log: executionResult.stderr 
+      }, { status: 500 });
+    }
+
+    // 7. Save Results to Database
+    const savedResults = await prisma.$transaction(
+      simulationResults.map((simResult: any) =>
+        prisma.simulationResult.create({
+          data: {
+            event_id: eventRecord.id,
+            event_time: new Date(simResult.event_time),
+            start_time: simResult.start_time,
+            end_time: simResult.end_time,
+            container_id: simResult.container_id,
+            move_type: simResult.move_type,
+            from_sid: simResult.from_sid,
+            from_tier: simResult.from_tier,
+            to_sid: simResult.to_sid,
+            to_tier: simResult.to_tier,
+            distance_crane: simResult.distance_crane,
+            crane_id: simResult.crane_id,
+            from_truck_zone_id: simResult.from_truck_zone_id,
+            to_truck_zone_id: simResult.to_truck_zone_id,
+            truck_id: simResult.truck_id,
+            distance_internal_truck: simResult.distance_internal_truck,
+            distance_external_truck: simResult.distance_external_truck,
+          },
+        })
+      )
+    );
+
+    // 8. Update Event Status
+    await prisma.event.update({
+      where: { id: eventRecord.id },
+      data: { status: 'completed' },
+    });
+
+    // Audit Log
+    await createAuditLog('PROCESS_EVENT', 'event', eventRecord.id, { results: savedResults.length }, request);
+
+    return NextResponse.json({
+      success: true,
+      event_id: eventRecord.id,
+      results: simulationResults
+    });
+
+  } catch (error) {
+    console.error('API Error:', error);
+    if (eventRecord) {
+      await prisma.event.update({ where: { id: eventRecord.id }, data: { status: 'failed' } });
+    }
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
+
+// ============================================
+// TAMBAHAN: GET METHOD
+// FILE: app/api/yard/get-action/route.ts
+// ============================================
+
+export async function GET(request: NextRequest) {
+  try {
+    const searchParams = request.nextUrl.searchParams;
+    const eventId = searchParams.get('event_id');
+    const truckId = searchParams.get('truck_id');
+    const containerId = searchParams.get('container_id');
+
+    // 1. Validasi Input (Minimal harus ada satu parameter pencarian)
+    if (!eventId && !truckId && !containerId) {
+      return NextResponse.json(
+        { error: 'Please provide event_id, truck_id, or container_id' },
+        { status: 400 }
+      );
+    }
+
+    // 2. Build Query Dinamis
+    const whereClause: any = {};
+    if (eventId) whereClause.id = parseInt(eventId);
+    if (truckId) whereClause.truck_id = truckId;
+    if (containerId) whereClause.container_id = containerId;
+
+    // 3. Ambil Event beserta Hasil Simulasinya
+    // Kita ambil 'findFirst' dengan order descending agar dapat status terbaru jika cari by truck/container
+    const eventRecord = await prisma.event.findFirst({
+      where: whereClause,
+      include: {
+        simulation_results: true, // Sertakan hasil action plan
+      },
+      orderBy: {
+        created_at: 'desc',
+      },
+    });
+
+    if (!eventRecord) {
+      return NextResponse.json(
+        { error: 'Event not found', details: 'No simulation record matches your query' },
+        { status: 404 }
+      );
+    }
+
+    // 4. Format Response
+    return NextResponse.json({
+      success: true,
+      event_id: eventRecord.id,
+      status: eventRecord.status, // pending, processing, completed, failed
+      truck_id: eventRecord.truck_id,
+      container_id: eventRecord.container_id,
+      request_time: eventRecord.time,
+      
+      // Ini adalah "Action" yang dihasilkan oleh algoritma
+      action_plan: eventRecord.simulation_results.length > 0 ? eventRecord.simulation_results[0] : null,
+      
+      timestamp: new Date().toISOString(),
+    });
+
+  } catch (error) {
+    console.error('Error fetching action:', error);
+    return NextResponse.json(
+      { 
+        error: 'Failed to fetch action', 
+        details: error instanceof Error ? error.message : 'Unknown error' 
+      },
+      { status: 500 }
+    );
+  }
+}
+
+// Helper Function
+// ==========================================================
+// GANTI FUNGSI executeScript DI BAGIAN PALING BAWAH FILE
+// app/api/yard/get-action/route.ts
+// ==========================================================
+
+function executeScript(command: string, args: string[]): Promise<{stdout: string, stderr: string}> {
+  return new Promise((resolve, reject) => {
+    // TAMBAHAN PENTING: { shell: true } agar jalan lancar di Windows
+    const process = spawn(command, args, { shell: true }); 
+    
+    let stdout = '';
+    let stderr = '';
+
+    process.stdout.on('data', (data) => stdout += data.toString());
+    process.stderr.on('data', (data) => stderr += data.toString());
+
+    process.on('close', (code) => {
+      // Log untuk debugging di terminal
+      console.log('--- SCRIPT LOGS ---');
+      console.log('STDOUT:', stdout);
+      console.log('STDERR:', stderr);
+      console.log('EXIT CODE:', code);
+      console.log('-------------------');
+
+      if (code === 0) {
+        resolve({ stdout, stderr });
+      } else {
+        // Resolve juga meski error, agar kita bisa baca stderr nya di API response
+        resolve({ stdout, stderr });
+      }
+    });
+
+    process.on('error', (err) => {
+      console.error('SPAWN ERROR:', err);
+      reject(err);
+    });
+  });
+}

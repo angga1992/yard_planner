@@ -1,0 +1,16 @@
+{
+  "truck_id": "T-143",
+  "container_id": "CONT-REQ-26",
+  "is_import": 1,
+  "is_export": 0,
+  "is_inter_transhipment": 0,
+  "is_intra_transhipment": 0,
+  "weight_kg": 20000,
+  "size_ft": 40,
+  "is_reefer": 0,
+  "is_hazard": 0,
+  "is_dry": 1,
+  "is_pick_up": 1,
+  "is_drop_off": 0,
+  "time": "2026-01-19T01:03:54.166Z"
+}

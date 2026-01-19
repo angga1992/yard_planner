@@ -1,0 +1,16 @@
+{
+  "truck_id": "T-415",
+  "container_id": "C-7810",
+  "is_import": 0,
+  "is_export": 1,
+  "is_inter_transhipment": 0,
+  "is_intra_transhipment": 0,
+  "weight_kg": 20000,
+  "size_ft": 40,
+  "is_reefer": 0,
+  "is_hazard": 0,
+  "is_dry": 1,
+  "is_pick_up": 0,
+  "is_drop_off": 1,
+  "time": "2026-01-18T23:17:23.185Z"
+}

@@ -1,0 +1,16 @@
+{
+  "truck_id": "TRUCK-IMP-545",
+  "container_id": "CONT-IMP-270",
+  "is_import": 1,
+  "is_export": 0,
+  "is_inter_transhipment": 0,
+  "is_intra_transhipment": 0,
+  "weight_kg": 0,
+  "size_ft": 20,
+  "is_reefer": 1,
+  "is_hazard": 0,
+  "is_dry": 0,
+  "is_pick_up": 1,
+  "is_drop_off": 0,
+  "time": "2026-01-15T09:49:22.232Z"
+}
