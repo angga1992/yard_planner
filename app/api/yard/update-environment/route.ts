@@ -4,12 +4,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/db';
 
-// --- FIX PENTING ---
-// Mencegah error saat npm run build
-export const dynamic = 'force-dynamic';
-// -------------------
+// --- CONFIG WAJIB ---
+export const dynamic = 'force-dynamic';      // Wajib Dinamis
+export const revalidate = 0;                 // Jangan di-cache
+export const fetchCache = 'force-no-store';  // Jangan simpan fetch data
+export const maxDuration = 60;               // Timeout (opsional, untuk Vercel/Serverless)
+// --------------------
 
-// GET: Dipanggil oleh Frontend untuk menggambar Map
+// GET: Dipanggil oleh Frontend
 export async function GET() {
   try {
     const slots = await prisma.yardSlot.findMany({
@@ -36,23 +38,12 @@ export async function GET() {
   }
 }
 
-// POST: Dipanggil oleh Postman (Manual Update) atau Script
+// POST: Manual Update
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Validasi basic
-    if (!body.block || !body.bay || !body.row || !body.tier) {
-      return NextResponse.json(
-        { error: 'Missing coordinates (block, bay, row, tier)' }, 
-        { status: 400 }
-      );
-    }
-
-    // LOGIKA PERBAIKAN: Find First -> Update / Create
-    // Ini menggantikan upsert yang error tadi
-    
-    // 1. Cari apakah slot sudah ada?
+    // 1. Cari dulu (Find)
     const existingSlot = await prisma.yardSlot.findFirst({
         where: {
             yard: body.yard || 'Y1',
@@ -66,23 +57,22 @@ export async function POST(request: NextRequest) {
     let result;
 
     if (existingSlot) {
-        // 2. JIKA ADA: Update Data Slot Tersebut
+        // 2. Update
         result = await prisma.yardSlot.update({
             where: { id: existingSlot.id },
             data: {
                 container_id: body.container_id,
-                // Gunakan value dari body, atau fallback ke existing jika undefined
-                is_import: body.is_import !== undefined ? body.is_import : existingSlot.is_import,
-                is_export: body.is_export !== undefined ? body.is_export : existingSlot.is_export,
-                is_reefer: body.is_reefer !== undefined ? body.is_reefer : existingSlot.is_reefer,
-                is_hazard: body.is_hazard !== undefined ? body.is_hazard : existingSlot.is_hazard,
-                is_dry: body.is_dry !== undefined ? body.is_dry : existingSlot.is_dry,
-                weight_kg: body.weight_kg !== undefined ? body.weight_kg : existingSlot.weight_kg,
+                is_import: body.is_import ?? existingSlot.is_import,
+                is_export: body.is_export ?? existingSlot.is_export,
+                is_reefer: body.is_reefer ?? existingSlot.is_reefer,
+                is_hazard: body.is_hazard ?? existingSlot.is_hazard,
+                is_dry: body.is_dry ?? existingSlot.is_dry,
+                weight_kg: body.weight_kg ?? existingSlot.weight_kg,
                 time: new Date()
             }
         });
     } else {
-        // 3. JIKA TIDAK ADA: Create Baru (Isi SEMUA field wajib dengan default value 0)
+        // 3. Create
         result = await prisma.yardSlot.create({
             data: {
                 yard: body.yard || 'Y1',
@@ -91,17 +81,15 @@ export async function POST(request: NextRequest) {
                 row: body.row,
                 tier: body.tier,
                 size_ft: body.size_ft || 40,
+                container_id: body.container_id || null,
                 
-                container_id: body.container_id || null, // Boleh null
-                
-                // --- FIX: ISI SEMUA FIELD WAJIB DENGAN DEFAULT 0 ---
+                // Default Values (0) untuk field mandatory
                 is_import: body.is_import || 0,
                 is_export: body.is_export || 0,
                 is_reefer: body.is_reefer || 0,
                 is_hazard: body.is_hazard || 0,
-                is_dry: body.is_dry !== undefined ? body.is_dry : 1, // Default dry = 1
+                is_dry: body.is_dry ?? 1,
                 
-                // Field lain yang wajib di Prisma Schema tapi jarang dipakai
                 is_inter_transhipment: 0,
                 is_intra_transhipment: 0,
                 is_pick_up: 0,
@@ -113,15 +101,12 @@ export async function POST(request: NextRequest) {
         });
     }
 
-    return NextResponse.json({
-      success: true,
-      data: result
-    });
+    return NextResponse.json({ success: true, data: result });
 
   } catch (error) {
     console.error('Error updating environment:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to update environment', details: error instanceof Error ? error.message : 'Unknown' },
+      { success: false, error: 'Failed update', details: error instanceof Error ? error.message : 'Unknown' },
       { status: 500 }
     );
   }
