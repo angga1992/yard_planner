@@ -4,23 +4,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/db';
 
-// --- FIX PENTING ---
-// Baris ini memberitahu Next.js: "Jangan jalankan ini saat Build Time!
-// Jalankan hanya saat ada request asli dari user (Runtime)."
-export const dynamic = 'force-dynamic'; 
-// -------------------
+// --- KONFIGURASI ANTI-BUILD ERROR ---
+export const dynamic = 'force-dynamic';      // Wajib: Render saat runtime
+export const revalidate = 0;                 // Wajib: Jangan cache data ini
+export const fetchCache = 'force-no-store';  // Wajib: Selalu ambil data baru
+// ------------------------------------
 
 export async function GET(request: NextRequest) {
   try {
-    // Ambil parameter limit dari URL (default 20)
     const searchParams = request.nextUrl.searchParams;
     const limit = parseInt(searchParams.get('limit') || '20');
 
-    // Ambil data event dari database
+    // Pastikan prisma terhubung
+    if (!prisma) {
+      throw new Error("Database client not initialized");
+    }
+
     const events = await prisma.event.findMany({
-      orderBy: {
-        created_at: 'desc', // Urutkan dari yang terbaru
-      },
+      orderBy: { created_at: 'desc' },
       take: limit,
     });
 
