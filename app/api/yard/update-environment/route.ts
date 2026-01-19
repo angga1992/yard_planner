@@ -49,78 +49,79 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Upsert (Update jika ada, Create jika belum ada)
-    const updatedSlot = await prisma.yardSlot.upsert({
-      where: {
-        // Asumsi kita punya unique constraint compound atau kita cari manual
-        // Prisma butuh unique identifier untuk 'where' di upsert.
-        // Jika schema Anda memakai ID auto-increment, upsert agak tricky tanpa ID.
-        // Kita pakai findFirst + update/create logic manual agar aman.
-        id: -1 // Dummy, kita akan override logic di bawah
-      },
-      update: {}, 
-      create: { 
-         yard: 'Y1', block: 'A', bay: 1, row: 1, tier: 1, size_ft: 40, is_dry: 1, time: new Date() 
-      } 
-    }).catch(async () => {
-        // Fallback manual jika upsert ID error
-        const existing = await prisma.yardSlot.findFirst({
-            where: {
+    // LOGIKA PERBAIKAN: Find First -> Update / Create
+    // Ini menggantikan upsert yang error tadi
+    
+    // 1. Cari apakah slot sudah ada?
+    const existingSlot = await prisma.yardSlot.findFirst({
+        where: {
+            yard: body.yard || 'Y1',
+            block: body.block,
+            bay: body.bay,
+            row: body.row,
+            tier: body.tier
+        }
+    });
+
+    let result;
+
+    if (existingSlot) {
+        // 2. JIKA ADA: Update Data Slot Tersebut
+        result = await prisma.yardSlot.update({
+            where: { id: existingSlot.id },
+            data: {
+                container_id: body.container_id,
+                // Gunakan value dari body, atau fallback ke existing jika undefined
+                is_import: body.is_import !== undefined ? body.is_import : existingSlot.is_import,
+                is_export: body.is_export !== undefined ? body.is_export : existingSlot.is_export,
+                is_reefer: body.is_reefer !== undefined ? body.is_reefer : existingSlot.is_reefer,
+                is_hazard: body.is_hazard !== undefined ? body.is_hazard : existingSlot.is_hazard,
+                is_dry: body.is_dry !== undefined ? body.is_dry : existingSlot.is_dry,
+                weight_kg: body.weight_kg !== undefined ? body.weight_kg : existingSlot.weight_kg,
+                time: new Date()
+            }
+        });
+    } else {
+        // 3. JIKA TIDAK ADA: Create Baru (Isi SEMUA field wajib dengan default value 0)
+        result = await prisma.yardSlot.create({
+            data: {
                 yard: body.yard || 'Y1',
                 block: body.block,
                 bay: body.bay,
                 row: body.row,
-                tier: body.tier
+                tier: body.tier,
+                size_ft: body.size_ft || 40,
+                
+                container_id: body.container_id || null, // Boleh null
+                
+                // --- FIX: ISI SEMUA FIELD WAJIB DENGAN DEFAULT 0 ---
+                is_import: body.is_import || 0,
+                is_export: body.is_export || 0,
+                is_reefer: body.is_reefer || 0,
+                is_hazard: body.is_hazard || 0,
+                is_dry: body.is_dry !== undefined ? body.is_dry : 1, // Default dry = 1
+                
+                // Field lain yang wajib di Prisma Schema tapi jarang dipakai
+                is_inter_transhipment: 0,
+                is_intra_transhipment: 0,
+                is_pick_up: 0,
+                is_drop_off: 0,
+                weight_kg: body.weight_kg || 0,
+                
+                time: new Date()
             }
         });
-
-        if (existing) {
-            return prisma.yardSlot.update({
-                where: { id: existing.id },
-                data: {
-                    container_id: body.container_id,
-                    is_import: body.is_import,
-                    is_export: body.is_export,
-                    is_reefer: body.is_reefer,
-                    weight_kg: body.weight_kg,
-                    time: new Date()
-                }
-            });
-        } else {
-            return prisma.yardSlot.create({
-                data: {
-                    yard: body.yard || 'Y1',
-                    block: body.block,
-                    bay: body.bay,
-                    row: body.row,
-                    tier: body.tier,
-                    size_ft: body.size_ft || 40,
-                    container_id: body.container_id,
-                    is_import: body.is_import,
-                    is_export: body.is_export,
-                    is_reefer: body.is_reefer,
-                    weight_kg: body.weight_kg,
-                    is_dry: 1,
-                    is_hazard: 0,
-                    is_inter_transhipment: 0,
-                    is_intra_transhipment: 0,
-                    is_pick_up: 0,
-                    is_drop_off: 0,
-                    time: new Date()
-                }
-            });
-        }
-    });
+    }
 
     return NextResponse.json({
       success: true,
-      data: updatedSlot
+      data: result
     });
 
   } catch (error) {
     console.error('Error updating environment:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to update environment' },
+      { success: false, error: 'Failed to update environment', details: error instanceof Error ? error.message : 'Unknown' },
       { status: 500 }
     );
   }
