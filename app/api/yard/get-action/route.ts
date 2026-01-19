@@ -8,6 +8,11 @@ import path from 'path';
 import prisma from '@/lib/db';
 import { createAuditLog } from '@/lib/audit';
 
+// --- FIX PENTING ---
+// Tambahkan ini agar Next.js TIDAK menjalankannya saat 'npm run build'
+export const dynamic = 'force-dynamic'; 
+// -------------------
+
 // --- INTERFACES ---
 interface EventData {
   truck_id: string;
@@ -43,21 +48,18 @@ interface RequestBody {
 
 // --- POST METHOD (TRIGGER SIMULATION) ---
 export async function POST(request: NextRequest) {
-  // Deklarasi variabel di luar try-catch agar bisa diakses di catch block
   let eventRecord: { 
     id: number; 
     status: string; 
     truck_id: string; 
     container_id: string; 
     time: Date; 
-    // ... properti lain jika perlu
   } | null = null;
   
   try {
     const body: RequestBody = await request.json();
     const { event, preplanning } = body;
 
-    // Validate event data
     if (!event || !event.truck_id || !event.container_id) {
       return NextResponse.json(
         { error: 'Missing required event fields: truck_id, container_id' },
@@ -86,9 +88,6 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // --- [FIX] TYPE GUARD PENTING ---
-    // Kita pastikan eventRecord ada isinya sebelum lanjut.
-    // Ini menghilangkan error 'possibly null' di baris-baris selanjutnya.
     if (!eventRecord) {
         throw new Error("Failed to create event record in database");
     }
@@ -110,7 +109,6 @@ export async function POST(request: NextRequest) {
     }
 
     // 3. Prepare Data for Simulation Script
-    // Ambil snapshot yard saat ini
     const yardSlots = await prisma.yardSlot.findMany();
     const yardStateJson = yardSlots.map(slot => ({
       yard: slot.yard,
@@ -127,7 +125,6 @@ export async function POST(request: NextRequest) {
     }));
 
     // 4. Create Temp Files
-    // Kita simpan JSON input untuk script Python/TS
     const tempDir = path.join(process.cwd(), 'temp');
     try { await mkdir(tempDir, { recursive: true }); } catch (e) {}
 
@@ -144,7 +141,6 @@ export async function POST(request: NextRequest) {
     }
 
     // 5. EXECUTE TYPESCRIPT SIMULATION
-    // Menggunakan 'tsx' untuk menjalankan script algoritma
     const scriptPath = path.join(process.cwd(), 'scripts', 'run_rl_des_inference_single.ts');
     
     const args = [
@@ -158,7 +154,6 @@ export async function POST(request: NextRequest) {
       args.push('--preplanning_json', preplanningPath);
     }
 
-    // Deteksi OS (Windows pakai npx.cmd, Linux/Mac pakai npx)
     const command = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 
     console.log(`Executing: ${command} ${args.join(' ')}`); 
@@ -166,7 +161,6 @@ export async function POST(request: NextRequest) {
     const executionResult = await executeScript(command, args);
 
     // 6. Read Results
-    // Script akan menghasilkan file output JSON
     const resultsPath = path.join(
       process.cwd(), 
       'ReinforcementLearningStrategyDES_DES_simulated_tasks.json'
@@ -179,7 +173,6 @@ export async function POST(request: NextRequest) {
     } catch (error) {
       console.error('Simulation script failed/no output:', executionResult.stderr);
       
-      // Update DB jadi failed
       await prisma.event.update({
         where: { id: eventRecord.id },
         data: { status: 'failed' },
@@ -192,12 +185,11 @@ export async function POST(request: NextRequest) {
     }
 
     // 7. Save Results to Database
-    // Simpan hasil "Action Plan" ke tabel SimulationResult
     const savedResults = await prisma.$transaction(
       simulationResults.map((simResult: any) =>
         prisma.simulationResult.create({
           data: {
-            event_id: eventRecord!.id, // Aman menggunakan ! karena sudah dicek di atas
+            event_id: eventRecord!.id, 
             event_time: new Date(simResult.event_time),
             start_time: simResult.start_time,
             end_time: simResult.end_time,
@@ -225,7 +217,6 @@ export async function POST(request: NextRequest) {
       data: { status: 'completed' },
     });
 
-    // Audit Log
     await createAuditLog('PROCESS_EVENT', 'event', eventRecord.id, { results: savedResults.length }, request);
 
     return NextResponse.json({
@@ -236,7 +227,6 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('API Error:', error);
-    // Jika eventRecord sempat dibuat tapi proses gagal di tengah jalan, tandai sebagai failed
     if (eventRecord) {
       await prisma.event.update({ where: { id: eventRecord.id }, data: { status: 'failed' } });
     }
@@ -252,7 +242,6 @@ export async function GET(request: NextRequest) {
     const truckId = searchParams.get('truck_id');
     const containerId = searchParams.get('container_id');
 
-    // 1. Validasi Input
     if (!eventId && !truckId && !containerId) {
       return NextResponse.json(
         { error: 'Please provide event_id, truck_id, or container_id' },
@@ -260,13 +249,11 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // 2. Build Query
     const whereClause: any = {};
     if (eventId) whereClause.id = parseInt(eventId);
     if (truckId) whereClause.truck_id = truckId;
     if (containerId) whereClause.container_id = containerId;
 
-    // 3. Ambil Event + Hasil Simulasi
     const eventRecord = await prisma.event.findFirst({
       where: whereClause,
       include: {
@@ -284,7 +271,6 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // 4. Return Data
     return NextResponse.json({
       success: true,
       event_id: eventRecord.id,
@@ -308,10 +294,9 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// --- HELPER FUNCTION: EXECUTE SCRIPT ---
+// --- HELPER FUNCTION ---
 function executeScript(command: string, args: string[]): Promise<{stdout: string, stderr: string}> {
   return new Promise((resolve, reject) => {
-    // shell: true sangat penting agar command dikenali di Windows
     const process = spawn(command, args, { shell: true }); 
     
     let stdout = '';
@@ -326,9 +311,6 @@ function executeScript(command: string, args: string[]): Promise<{stdout: string
       if (stderr) console.log('STDERR:', stderr);
       console.log('EXIT CODE:', code);
       console.log('-------------------');
-
-      // Kita resolve object stdout/stderr apapun exit codenya
-      // Error handling logic ada di pemanggil fungsi
       resolve({ stdout, stderr });
     });
 
